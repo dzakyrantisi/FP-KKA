@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Dashboard Rute</h1>
+<div class="row">
+    <div class="col-md-6">
+        <div class="card text-bg-primary mb-3">
+            <div class="card-body">
+                <h5 class="card-title">Total Initial States</h5>
+                <p class="card-text">{{ total_initial_states }}</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="card text-bg-success mb-3">
+            <div class="card-body">
+                <h5 class="card-title">Total Goal States</h5>
+                <p class="card-text">{{ total_goal_states }}</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="map" style="height: 500px;"></div>
+
+<select id="start" class="form-select mt-3">
+    <option value="">Pilih Initial State</option>
+    {% for location in locations %}
+    <option value="{{ location }}">{{ location }}</option>
+    {% endfor %}
+</select>
+
+<select id="goal" class="form-select mt-3">
+    <option value="">Pilih Goal State</option>
+    {% for location in locations %}
+    <option value="{{ location }}">{{ location }}</option>
+    {% endfor %}
+</select>
+
+<select id="vehicle" class="form-select mt-3">
+    <option value="motor">Motor</option>
+    <option value="mobil">Mobil</option>
+</select>
+
+<button id="findRoute" class="btn btn-primary mt-3">Cari Rute</button>
+
+<p id="path" class="mt-3"></p>
+<p id="cost"></p>
+{% endblock %}
